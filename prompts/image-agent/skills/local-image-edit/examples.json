@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "edit-01",
+      "input": "把这张里的桌面换成深色木纹，产品和角度保持其他不变",
+      "expectedSkillId": "local-image-edit",
+      "expectedAction": "edit",
+      "assertions": ["prompt 包含 Modify ONLY", "保护产品和构图"]
+    },
+    {
+      "id": "edit-02",
+      "input": "去掉图里的左下角杯子，其他像素保持不变",
+      "expectedSkillId": "local-image-edit",
+      "expectedAction": "edit",
+      "assertions": ["只删除目标物", "匹配原背景纹理"]
+    },
+    {
+      "id": "edit-03",
+      "input": "给上一张背景增加一个小音箱，主体不要动",
+      "expectedSkillId": "local-image-edit",
+      "expectedAction": "edit",
+      "assertions": ["新增元素透视和阴影匹配", "主体身份稳定"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "edit-neg-01",
+      "input": "只借这张的氛围，另起一张城市夜景",
+      "reason": "参考另起新图"
+    },
+    {
+      "id": "edit-neg-02",
+      "input": "分析图片里的构图和颜色，不要修改",
+      "reason": "图片分析"
+    }
+  ]
+}

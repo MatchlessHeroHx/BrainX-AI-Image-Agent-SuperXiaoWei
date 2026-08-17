@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "texture-01",
+      "input": "给这瓶香水做商品棚拍，突出玻璃折射和金属瓶盖",
+      "expectedSkillId": "product-texture-shot",
+      "expectedAction": "reference_generate",
+      "assertions": ["描述玻璃透射和受控高光", "保持产品结构"]
+    },
+    {
+      "id": "texture-02",
+      "input": "做一个耳机磨砂塑料的微距产品广告图",
+      "expectedSkillId": "product-texture-shot",
+      "expectedAction": "generate",
+      "assertions": ["使用 macro 镜头", "用掠射光解释磨砂材质"]
+    },
+    {
+      "id": "texture-03",
+      "input": "做一张手表表盘和拉丝钢带的材质特写",
+      "expectedSkillId": "product-texture-shot",
+      "expectedAction": "generate",
+      "assertions": ["高光方向可信", "材质细节具体"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "texture-neg-01",
+      "input": "用耳机产品图做 Amazon 主图，不要促销文字",
+      "reason": "平台主图优先电商 skill"
+    },
+    {
+      "id": "texture-neg-02",
+      "input": "给奇幻法师做一套角色设定图",
+      "reason": "角色创作"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "id": "a-plus-guidance-template",
+    "name": "A+ 指导模板生成提示词",
+    "description": "从产品图和产品信息生成 7 模块 Amazon Premium A+ 指导模板。源自 docs/A+图Skill功能&流程指导/2.md 的“具体提示词”。",
+    "file": "runtime-prompts/a-plus-guidance-template.prompt.md",
+    "triggers": ["A+", "A+图", "A+ 套图", "Premium A+", "Amazon A+", "指导模板", "策划", "7 张", "整套"],
+    "aPlusStages": ["guidance_template"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-01-translator",
+    "name": "A+ 模块01 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块01品牌情绪 Hero Banner 的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-01-translator.prompt.md",
+    "triggers": ["模块01", "模块 01", "模块1", "模块 1", "Module 01", "Module 1"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["01"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-02-translator",
+    "name": "A+ 模块02 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块02核心价值主张的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-02-translator.prompt.md",
+    "triggers": ["模块02", "模块 02", "模块2", "模块 2", "Module 02", "Module 2"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["02"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-03-translator",
+    "name": "A+ 模块03 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块03关键功能可视化的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-03-translator.prompt.md",
+    "triggers": ["模块03", "模块 03", "模块3", "模块 3", "Module 03", "Module 3"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["03"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-04-translator",
+    "name": "A+ 模块04 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块04场景沉浸图的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-04-translator.prompt.md",
+    "triggers": ["模块04", "模块 04", "模块4", "模块 4", "Module 04", "Module 4"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["04"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-05-translator",
+    "name": "A+ 模块05 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块05技术 / 工艺细节的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-05-translator.prompt.md",
+    "triggers": ["模块05", "模块 05", "模块5", "模块 5", "Module 05", "Module 5"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["05"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-06-translator",
+    "name": "A+ 模块06 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块06适用人群与场景矩阵的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-06-translator.prompt.md",
+    "triggers": ["模块06", "模块 06", "模块6", "模块 6", "Module 06", "Module 6"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["06"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  },
+  {
+    "id": "a-plus-module-07-translator",
+    "name": "A+ 模块07 Prompt Translator",
+    "description": "根据已确认的 A+ 指导模板生成模块07信任收尾与行动召唤的英文生图 prompt。",
+    "file": "runtime-prompts/a-plus-module-07-translator.prompt.md",
+    "triggers": ["模块07", "模块 07", "模块7", "模块 7", "Module 07", "Module 7"],
+    "aPlusStages": ["module_prompt", "module_image"],
+    "selectedModules": ["07"],
+    "preferredAgentProviderId": "google-ai-studio",
+    "preferredAgentModelId": "gemini-3.5-flash"
+  }
+]

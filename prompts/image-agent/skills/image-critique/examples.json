@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "critique-01",
+      "input": "分析这张图，重点看构图和文字层级",
+      "expectedSkillId": "image-critique",
+      "expectedAction": "discuss",
+      "assertions": ["按可见证据分析", "不触发生图"]
+    },
+    {
+      "id": "critique-02",
+      "input": "描述图片里有什么，顺便说一下光线和颜色",
+      "expectedSkillId": "image-critique",
+      "expectedAction": "discuss",
+      "assertions": ["覆盖主体、光线和配色", "区分观察与推断"]
+    },
+    {
+      "id": "critique-03",
+      "input": "对比这两张产品图，哪张主体更突出？",
+      "expectedSkillId": "image-critique",
+      "expectedAction": "discuss",
+      "assertions": ["用同一维度并列比较", "给出适用场景"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "critique-neg-01",
+      "input": "按这个生成一张新海报",
+      "reason": "明确生成请求"
+    },
+    {
+      "id": "critique-neg-02",
+      "input": "写提示词给我，不要出图",
+      "reason": "提示词写作"
+    }
+  ]
+}

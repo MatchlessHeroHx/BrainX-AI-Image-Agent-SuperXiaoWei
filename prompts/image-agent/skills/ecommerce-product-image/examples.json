@@ -1,0 +1,103 @@
+{
+  "positive": [
+    {
+      "id": "broad-ecommerce-clarify",
+      "input": "我想要生成电商图",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "clarify",
+      "assertions": [
+        "Ask for product identity and whether the image is for main listing, detail-benefit, or lifestyle scene.",
+        "Do not ask a long checklist."
+      ]
+    },
+    {
+      "id": "category-parameter-discussion",
+      "input": "是 3C 产品的电商图，一个标准的电商图会有哪些参数呢？",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "discuss",
+      "assertions": [
+        "Explain differences between main image, detail-benefit image, lifestyle scene, and material detail image.",
+        "Do not trigger image generation."
+      ]
+    },
+    {
+      "id": "powerbank-detail-generate",
+      "input": "做一个 3C 充电宝的详情卖点图，科技感，突出金属质感和快充",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "generate",
+      "assertions": [
+        "Prompt includes metal material rendering, interface or charging indicator details, fast-charging visual cue, cool tech lighting, and a clean copy area.",
+        "If no reference product image exists, assistant should indicate it is making a concept product image."
+      ]
+    },
+    {
+      "id": "amazon-main-image-with-upload",
+      "input": "用我上传的这张产品图做 Amazon 主图",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "reference_generate",
+      "assertions": [
+        "Preserve the original product identity exactly.",
+        "Use clean white or light neutral background and no promotional text."
+      ]
+    },
+    {
+      "id": "premium-a-plus-planning",
+      "input": "帮这个产品做一套 Amazon Premium A+ 套图策划",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "discuss",
+      "assertions": [
+        "Plan seven modules in reading order.",
+        "Include product judgment, typography system card, narrative logic, module layouts, and rhythm self-check."
+      ]
+    },
+    {
+      "id": "premium-a-plus-direct-set-gated",
+      "input": "用我上传的产品图直接生成一整套 7 张 Amazon A+ 图",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "discuss",
+      "assertions": [
+        "Do not skip directly to image generation.",
+        "First create the A+ guidance template from product image and 2.md logic.",
+        "Explain that module images should be generated from module-specific prompts."
+      ]
+    },
+    {
+      "id": "a-plus-module-prompt",
+      "input": "根据刚才的 A+ 策划输出模块03的生图 prompt",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "discuss",
+      "assertions": [
+        "Prompt follows [Module], [Layout], [Hero Visual], [Typography System], [Text Overlay], optional [Feature Cards], [Style], [Negative].",
+        "Only module03 content is included."
+      ]
+    },
+    {
+      "id": "a-plus-module-image-from-template",
+      "input": "指导模板已经确认了，现在按模块02生成这张 A+ 图",
+      "expectedSkillId": "ecommerce-product-image",
+      "expectedAction": "reference_generate",
+      "assertions": [
+        "Use the confirmed guidance template plus the module02 fixed translator to form the concrete prompt.",
+        "Use the product image as a reference for generation.",
+        "Generate only module02, not the whole A+ set."
+      ]
+    }
+  ],
+  "negative": [
+    {
+      "id": "character-worldbuilding",
+      "input": "我们先聊一个赛博朋克角色的世界观设定",
+      "reason": "Character and worldbuilding work is outside ecommerce product imagery."
+    },
+    {
+      "id": "pure-style-transfer-poster",
+      "input": "参考这张的配色，做一张咖啡店海报",
+      "reason": "This is reference-style transfer or poster work, not ecommerce product image work."
+    },
+    {
+      "id": "local-edit-without-commerce-goal",
+      "input": "把上一张里的桌面换成深色",
+      "reason": "This is a local image edit with no commercial product-image target."
+    }
+  ]
+}

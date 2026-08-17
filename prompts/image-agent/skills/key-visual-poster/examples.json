@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "kv-01",
+      "input": "给新品发布会做一张未来感主视觉，右侧留标题区",
+      "expectedSkillId": "key-visual-poster",
+      "expectedAction": "generate",
+      "assertions": ["有第一视觉主体", "有文案安全区"]
+    },
+    {
+      "id": "kv-02",
+      "input": "做一张咖啡节 campaign 海报，温暖但不要复古",
+      "expectedSkillId": "key-visual-poster",
+      "expectedAction": "generate",
+      "assertions": ["说明信息层级", "不乱造 logo"]
+    },
+    {
+      "id": "kv-03",
+      "input": "为音乐活动做官网头图，主体在左边，右侧留报名信息",
+      "expectedSkillId": "key-visual-poster",
+      "expectedAction": "generate",
+      "assertions": ["考虑横幅裁切", "右侧留白清楚"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "kv-neg-01",
+      "input": "做一张末日女战士角色海报，重点是人物身份",
+      "reason": "角色主视觉应由角色 skill 主导"
+    },
+    {
+      "id": "kv-neg-02",
+      "input": "用产品原图做 Amazon 主图，纯白背景",
+      "reason": "平台电商主图"
+    }
+  ]
+}

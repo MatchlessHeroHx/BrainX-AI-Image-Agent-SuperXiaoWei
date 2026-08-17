@@ -1,0 +1,77 @@
+{
+  "initialPrompts": [
+    {
+      "label": "先聊方向",
+      "prompt": "先别急着出图，帮我把方向收成两个可执行的视觉路线：一个更克制偏概念，一个更有冲击力偏 campaign，每个说清楚主体、构图重点和主色。"
+    },
+    {
+      "label": "主视觉海报",
+      "prompt": "做一张主视觉海报：主体明确居中或黄金分割，第一眼能看清核心信息；背景克制但有空间层次，光线给一束方向光建立氛围，整体像成熟品牌 campaign。配色你来定，我看着调。"
+    },
+    {
+      "label": "商品质感图",
+      "prompt": "做一张商品展示图：主体居中或微悬浮，背景干净有微妙渐变；重点抓边缘高光、材质质感和真实体积感，光线偏冷或偏暖你定一下。不加多余文字。"
+    },
+    {
+      "label": "角色主海报",
+      "prompt": "做一张角色主海报：人物姿态自然不僵，表情有一处情绪点（眼神、嘴角、手势任选），构图给一个记忆点（光、剪影、留白），氛围克制但不平。"
+    }
+  ],
+  "referencePrompts": [
+    {
+      "label": "只换背景",
+      "prompt": "保留当前主体、姿态和构图，只换背景为黄昏海边；新背景的光线方向要和主体的轮廓光自然衔接，不要做成旅行广告。"
+    },
+    {
+      "label": "改轻一点",
+      "prompt": "沿用当前主体关系和镜头角度，把画面整体做得更轻、更干净：减少杂色、提升留白和材质呼吸感，色温稍微偏冷一档。"
+    },
+    {
+      "label": "借风格另起",
+      "prompt": "参考这张图的配色、光线方向和氛围，但换成一个新主体和场景，不直接修改原图——你这边出一个能站住的新组合。"
+    },
+    {
+      "label": "只提气质",
+      "prompt": "只提升画面的质感和完成度：精修光影过渡、材质层次和细节，保留主体、构图、背景关系，不做明显重绘。"
+    }
+  ],
+  "selectedReferencePrompt": "基于我刚选中的参考图继续：保留主体关系和核心构图，只细化质感、光线和画面完成度。",
+  "thinkingStatus": {
+    "title": "正在思考",
+    "detail": "正在理解这轮需求、整理上下文，想清楚下一步要做什么。"
+  },
+  "generatingStatus": {
+    "title": "正在生图",
+    "detail": "正在按你确认的参数调用图像模型生成结果。"
+  },
+  "generationForm": {
+    "title": "出图参数",
+    "intro": "方向我已经想好了，出图的比例、分辨率和数量你来定，确认后我再生成。",
+    "aspectRatioLabel": "画面比例",
+    "resolutionLabel": "分辨率",
+    "outputCountLabel": "生成数量",
+    "submitLabel": "按这些参数生成",
+    "retryLabel": "调整参数后重试",
+    "submittedTitle": "已按以下参数生成",
+    "submittedHint": "想换参数可以直接再发一句，我会重新出一张表单。",
+    "countUnit": "张",
+    "noResolutionHint": "当前模型分辨率自动适配，无需选择。"
+  },
+  "aPlusBriefForm": {
+    "title": "电商图方案基础信息",
+    "intro": "这些信息会用于生成电商图方案，填多少用多少。",
+    "productNameLabel": "产品名称",
+    "productNamePlaceholder": "例如：磁吸无线充电宝",
+    "sellingPointsLabel": "重点突出的卖点",
+    "sellingPointsPlaceholder": "例如：强磁吸附、轻薄便携、快充、安全温控",
+    "targetCountryLabel": "目标国家 / 地区",
+    "targetCountryPlaceholder": "例如：美国",
+    "salesPlatformLabel": "销售平台",
+    "salesPlatformPlaceholder": "例如：Amazon US",
+    "candidateLabel": "识别到",
+    "submitLabel": "继续生成电商图方案",
+    "submittedTitle": "电商图方案信息已确认",
+    "submittedHint": "后续电商图方案会优先使用这些信息；没填写的部分会基于产品图和上下文处理。",
+    "optionalHint": "四项都是选填；卖点可以用逗号或换行分隔。"
+  }
+}

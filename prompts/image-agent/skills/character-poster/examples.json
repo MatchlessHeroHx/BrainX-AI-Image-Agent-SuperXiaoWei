@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "character-01",
+      "input": "把这个女战士做成低机位角色海报，保留盔甲和脸",
+      "expectedSkillId": "character-poster",
+      "expectedAction": "reference_generate",
+      "assertions": ["保持人物身份", "低机位和英雄姿态明确"]
+    },
+    {
+      "id": "character-02",
+      "input": "做一张疲惫侦探的雨夜人物情绪海报",
+      "expectedSkillId": "character-poster",
+      "expectedAction": "generate",
+      "assertions": ["表情、姿态和光线共同表达情绪", "角色是第一主体"]
+    },
+    {
+      "id": "character-03",
+      "input": "为游戏里的机械医生做一张英雄海报和角色立绘",
+      "expectedSkillId": "character-poster",
+      "expectedAction": "generate",
+      "assertions": ["固定身份锚点", "区分海报和立绘任务"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "character-neg-01",
+      "input": "给护肤品做一张品牌活动主视觉",
+      "reason": "品牌商品主视觉"
+    },
+    {
+      "id": "character-neg-02",
+      "input": "只把上一张人物的头发变短，其他不要动",
+      "reason": "明确局部编辑"
+    }
+  ]
+}

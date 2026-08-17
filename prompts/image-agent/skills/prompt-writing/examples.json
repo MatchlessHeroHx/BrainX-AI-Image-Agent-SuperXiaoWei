@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "prompt-01",
+      "input": "写提示词：金属充电宝详情图，不要出图",
+      "expectedSkillId": "prompt-writing",
+      "expectedAction": "discuss",
+      "assertions": ["交付完整英文 prompt", "不触发生图"]
+    },
+    {
+      "id": "prompt-02",
+      "input": "给我一个可以复用的商品图片 prompt 模板",
+      "expectedSkillId": "prompt-writing",
+      "expectedAction": "discuss",
+      "assertions": ["使用清楚占位符", "附一个填好示例"]
+    },
+    {
+      "id": "prompt-03",
+      "input": "帮我改写 prompt，去掉 8k、masterpiece 这类词",
+      "expectedSkillId": "prompt-writing",
+      "expectedAction": "discuss",
+      "assertions": ["保留有效约束", "改成自然语言"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "prompt-neg-01",
+      "input": "按这个直接出图，画一个白色机器人",
+      "reason": "用户明确要求生成"
+    },
+    {
+      "id": "prompt-neg-02",
+      "input": "分析一下上传图是什么风格",
+      "reason": "图片分析"
+    }
+  ]
+}

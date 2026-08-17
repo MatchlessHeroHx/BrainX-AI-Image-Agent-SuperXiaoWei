@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "reference-01",
+      "input": "参考这张的风格，只借琥珀配色和侧逆光，做咖啡店海报",
+      "expectedSkillId": "reference-style-transfer",
+      "expectedAction": "reference_generate",
+      "assertions": ["明确只借配色和光线", "不复制原主体"]
+    },
+    {
+      "id": "reference-02",
+      "input": "按这张的光线和构图另起一张，主体换成白色音箱",
+      "expectedSkillId": "reference-style-transfer",
+      "expectedAction": "reference_generate",
+      "assertions": ["创建新图而不是 edit", "完整描述新主体"]
+    },
+    {
+      "id": "reference-03",
+      "input": "A 图借这个配色，B 图参考构图，合成一个新的香水广告",
+      "expectedSkillId": "reference-style-transfer",
+      "expectedAction": "reference_generate",
+      "assertions": ["每张参考职责清楚", "不复制文字和 logo"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "reference-neg-01",
+      "input": "在原图上改，把杯子换成玻璃杯",
+      "reason": "编辑同一画布"
+    },
+    {
+      "id": "reference-neg-02",
+      "input": "描述这张图的风格和构图",
+      "reason": "只分析图片"
+    }
+  ]
+}

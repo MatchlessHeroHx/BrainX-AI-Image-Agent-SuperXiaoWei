@@ -1,0 +1,142 @@
+{
+  "schemaDescriptions": {
+    "assistantReply": "The complete user-facing reply. Follow the system prompt for persona, tone, wording, length, and conversational behavior. Do not expose implementation details.",
+    "generationPrompt": "A natural-language execution prompt for the image model. Prefer English unless the user explicitly asks for visible Chinese text."
+  },
+  "fallbackSystemPrompt": [
+    "你是“脑生科技超级小微”，以聊天为先，也能在用户需要时完成图片创作。",
+    "像真实朋友一样自然交流；需要做图时给出明确的视觉判断。不要冒充客服，不要暴露内部字段、模型或工具。",
+    "根据当前请求在 discuss、clarify、generate、edit、reference_generate、reframe 中选择行动，并只返回符合 PlannerOutput 的 JSON。"
+  ],
+  "plannerRuntimeInstructions": [
+    "The system prompt is the sole authority for general persona and conversational voice. Skills may constrain scene-specific reasoning and deliverables; schemas, runtime context, examples, memory, and UI copy must not create a second general reply style.",
+    "Return JSON that matches the PlannerOutput schema exactly, with no Markdown or surrounding explanation.",
+    "Always return `memoryUpdate.conversationSummary` as a compact rolling summary of the current goal, confirmed facts, decisions, unresolved questions, relevant assets, and the result of this turn. Update the previous persistent summary instead of merely repeating the latest message.",
+    "Use `memoryUpdate.learnedUserPreferences` only for durable preferences the user explicitly states or clearly confirms for future work. One-off constraints belong in skillBrief or conversationSummary. Put an existing preference in removedUserPreferences only when the user explicitly revokes or replaces it."
+  ],
+  "behaviorDefaults": {
+    "vagueMultipleOutputCount": 1
+  },
+  "fallbackImagePrompt": {
+    "prefixes": {
+      "generate": "Create one polished image. Anchor on a clear primary subject with intentional composition, deliberate lighting direction, and tactile material rendering. Use specific style anchors, named lighting direction, and a defined palette. Avoid keyword-soup descriptors (no '8k', 'masterpiece', 'trending on artstation'). Avoid visible text or watermark unless requested.",
+      "edit": "Edit the referenced image. Modify ONLY what the user describes. The rest of the image must remain pixel-stable: same composition, same camera angle, same lighting direction outside the modified area, same color palette, same background details, same subject identity (pose, facial features, body proportions, outfit, skin tone, hair). Do not re-render or re-interpret any region outside the modified area.",
+      "reference_generate": "Create a new image inspired by the referenced image rather than editing the same canvas. Borrow only the relevant style, palette, lighting, composition, mood, or character cues. Render an entirely new subject and scene per the user's request.",
+      "reframe": "Create a fresh image direction based only on the current request, without relying on discarded prior context. Anchor on a clear primary subject, intentional composition, named lighting and palette."
+    },
+    "continuityTemplate": " Keep visual continuity with \"{label}\", especially {focus}.",
+    "uploadReferenceHint": " Treat the uploaded image as the primary visual reference and preserve the parts that remain relevant to the request.",
+    "userRequestPrefix": " User request: ",
+    "emptyUserRequest": "The user uploaded an image but gave no specific visual instruction.",
+    "vagueWordTranslations": {
+      "高级感": "[restrained palette, refined materials, intentional negative space, soft directional lighting, subtle gradients]",
+      "氛围感": "[volumetric lighting, atmospheric haze, warm-cool color contrast, soft bokeh, ambient mood]",
+      "质感": "[tactile material rendering, visible surface texture, micro-detail, realistic light interaction]",
+      "电影感": "[cinematic widescreen composition, anamorphic depth of field, color-graded shadows]",
+      "治愈": "[warm soft daylight, gentle pastel palette, unhurried composition, intimate scale]",
+      "通透": "[clean uncluttered background, ample negative space, balanced lighting, low chromatic noise]",
+      "干净": "[clean uncluttered background, ample negative space, balanced lighting]",
+      "极简": "[flat composition, single focal subject, monochrome or limited palette, generous whitespace]",
+      "赛博朋克": "[neon magenta-cyan palette, wet asphalt reflections, holographic signage, atmospheric haze, light rain]",
+      "国潮": "[traditional Chinese motifs, ink-wash texture, vermillion-and-gold palette, paper grain]",
+      "复古胶片": "[Kodak Portra 400 film grain, faded color cast, slight halation, vignette]",
+      "油画感": "[impasto brush strokes, oil painting texture, classical chiaroscuro lighting]",
+      "科技感": "[clean geometric forms, cool blue-cyan accent lighting, polished metallic and glass surfaces]"
+    }
+  },
+  "fallbackAssistantReplies": {
+    "offlineUnavailable": "这会儿没连上，我还不能可靠判断你的需求，图也没法开始。过一会儿把刚才那句话再发一次就行。",
+    "uploadOnlyClarify": "图在，但我还不知道你想对它做什么。是改这张、借它的感觉画一张新的，还是先听我分析？",
+    "emptyClarify": "我还不知道要画什么。先给我一个主体就行，人、东西或场景都可以。",
+    "discuss": "可以，先不出图。你把现在最拿不准的地方告诉我，我先说具体判断。",
+    "shortClarify": "这句话还定不住画面。先告诉我主体是什么，剩下的我可以帮你补。",
+    "missingEditReferenceClarify": "听起来你是想改图，但我这里还对不上具体哪一张。发一张过来、从历史里选一张，或者直接说“改上一张”都可以。",
+    "generate": "我先按现在的信息画一张基线，主体和整体感觉先定下来，细节等你看过再调。",
+    "reframeHardReset": "前面的方向我不带进来，只按你这次说的重新画。",
+    "reframeSoft": "我换个方向继续画，前面已经确认过的有效设定会保留。",
+    "referenceGenerate": "我会只借参考图里与这次需求有关的部分，主体和场景重新画。",
+    "edit": "我会在原图上改你点到的部分，其余主体关系和构图保持不变。",
+    "iterationOnLatest": "我明白你指出的问题了。这一轮只动那部分，其他已经成立的内容不改。"
+  },
+  "assistantNotes": {
+    "clarification": "这轮先补齐关键信息，暂不出图。",
+    "singleResult": "先生成 1 张结果。",
+    "multipleResultTemplate": "共生成 {count} 张结果。",
+    "localPreviewTemplate": "当前是兜底预览，可先看方向与构图。{countNote}",
+    "referenceGenerationTemplate": "这轮使用 {referenceCount} 张参考图延续方向。{countNote}",
+    "directGenerationTemplate": "这轮按当前描述直接开始生成。{countNote}",
+    "referenceResolutionTemplate": "本轮图像指向：{resolutionNote}。"
+  },
+  "failureMessage": {
+    "text": "这张没生成出来，不过前面的内容都还在。你可以直接再试一次，也可以补一句想调整的地方。",
+    "note": "底层错误已记录，未生成图片。"
+  },
+  "assetText": {
+    "uploadFocus": "本轮上传的参考图",
+    "defaultGeneratedLabel": "新生成结果",
+    "localPreviewDirectionLabel": "DIRECTION"
+  },
+  "plannerPrompt": {
+    "conversationTitleLabel": "Conversation title",
+    "conversationSubtitleLabel": "Conversation subtitle",
+    "carryHintLabel": "Carry hint",
+    "recentResultSummaryLabel": "Recent result summary",
+    "conversationSummaryLabel": "Persistent conversation summary",
+    "availableAssetsLabel": "Available assets:",
+    "visualTimelineLabel": "Visual timeline of generated results:",
+    "newUploadsLabel": "New uploads in this turn:",
+    "explicitReferencesLabel": "Explicit references selected for this turn:",
+    "inferredReferencesLabel": "References inferred from the user's wording:",
+    "recentPreferencesLabel": "Recent user preferences:",
+    "recentConversationLabel": "Recent conversation:",
+    "currentUserMessageLabel": "Current user message",
+    "emptyCurrentUserMessage": "(empty text, user only uploaded image)",
+    "noNewUploads": "No new uploads in this turn.",
+    "noExplicitReferences": "No explicit reference selection in this turn.",
+    "noInferredReferences": "No reference inferred from the user's wording."
+  },
+  "workspaceText": {
+    "defaultHistoryNote": "沿用当前画面方向",
+    "emptySessionIntent": "这段会话还没有需求，适合先用一句话说明主体、风格或用途。",
+    "initialAssistantText": "你想做什么样的图，直接说就行。如果脑子里没有特别清晰的画面，发张参考图给我也可以。"
+  },
+  "referenceResolver": {
+    "originalImageReason": "识别为原图 / 上传图",
+    "secondLatestImageReason": "识别为上上张 / 上上版",
+    "latestImageReason": "识别为上一张 / 刚才那张",
+    "ordinalImageReasonTemplate": "识别为第 {ordinal} 张 / 版",
+    "semanticMatchReasonTemplate": "语义匹配到 {terms}"
+  },
+  "conversationContext": {
+    "fallbackTitle": "新会话",
+    "subtitleWithGeneratedTemplate": "当前已有 {generatedCount} 张结果图。最近一张可以继续细调，也可以作为新方向的起点。",
+    "subtitleWithUploadsTemplate": "当前已有 {uploadedCount} 张上传图片。说清楚要保留、替换或借用什么，画面会更容易收敛。",
+    "subtitleWithLatestUser": "这段对话还在收敛方向。补充主体、质感或场景后，就可以继续生成。",
+    "subtitleEmpty": "从一句画面描述开始，或先上传一张参考图，主体、风格和氛围这些可以一步步聊清楚。",
+    "carryLatestGeneratedCurrentTemplate": "当前可以沿着“{label}”继续细调。",
+    "carryLatestGeneratedParentTemplate": "它延续自“{label}”的主体关系。",
+    "carryLatestGeneratedSourceTemplate": "上一轮需求是：{text}",
+    "carryLatestGeneratedUserTemplate": "最近一次补充是：{text}",
+    "carryLatestUploadTemplate": "当前还没有固定结果图，最近一张上传图片是“{label}”。优先说清楚要保留、改变或借用什么。",
+    "carryLatestUser": "这段对话还在起方向阶段，可以继续补充风格、主体和画面主次。",
+    "carryEmpty": "当前还没有固定结果图，适合先明确主体、风格和场景氛围。",
+    "preferenceEmpty": "No recent user requests yet.",
+    "visualTimelineEmpty": "No generated results yet.",
+    "assetCatalogEmpty": "No assets yet.",
+    "recentResultSummaryTemplate": "最近的生成结果是 {latestLabelList}。最近 3 张结果依次是 {latestThreeLabelList}。",
+    "recentResultSummaryEmpty": "当前还没有生成结果。"
+  },
+  "plannerOutputExample": {
+    "assistantReply": "狗狗的轮廓和构图都不动，只把光线改成偏冷的杂志棚拍感。它现在的姿态已经很自然了，这一轮主要让明暗过渡和毛发质感更干净。",
+    "nextAction": "edit",
+    "shouldGenerate": true,
+    "needsClarification": false,
+    "generation": {
+      "mode": "edit",
+      "prompt": "Edit the referenced image into a cool blue editorial fashion photograph while preserving the corgi's silhouette, pose, size, and position. Apply a global tonal adjustment: refine lighting into soft directional studio light with a subtle cyan-blue cast. Preserve the background structure, the subject relationship, and pose. Enhance the fur detail, clean up distracting clutter, give the image a polished magazine finish with restrained contrast and a calm, premium mood.",
+      "referenceAssetIds": ["upload_warm_studio_dog", "generated_blue_editorial"],
+      "inheritConversationContext": true,
+      "outputCount": 1
+    }
+  }
+}

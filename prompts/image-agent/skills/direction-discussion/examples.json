@@ -1,0 +1,37 @@
+{
+  "positive": [
+    {
+      "id": "direction-01",
+      "input": "先别出图，帮这个咖啡品牌想三个冬季创意方向",
+      "expectedSkillId": "direction-discussion",
+      "expectedAction": "discuss",
+      "assertions": ["给出 2-3 条可见差异明确的路线", "不触发生图"]
+    },
+    {
+      "id": "direction-02",
+      "input": "我们先聊方向，把这个角色的世界观和视觉路线定下来",
+      "expectedSkillId": "direction-discussion",
+      "expectedAction": "discuss",
+      "assertions": ["讨论世界观、材质和情绪线", "邀请用户选择"]
+    },
+    {
+      "id": "direction-03",
+      "input": "先讨论方案，这个环保 campaign 可以有哪些不同视觉路线？",
+      "expectedSkillId": "direction-discussion",
+      "expectedAction": "discuss",
+      "assertions": ["路线对应传播目标", "generation 为 null"]
+    }
+  ],
+  "negative": [
+    {
+      "id": "direction-neg-01",
+      "input": "把上一张里的杯子删掉，其他内容保持不变",
+      "reason": "明确的局部编辑请求"
+    },
+    {
+      "id": "direction-neg-02",
+      "input": "描述一下我上传的画面里有什么",
+      "reason": "图片分析请求"
+    }
+  ]
+}
